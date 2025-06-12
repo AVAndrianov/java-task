@@ -1,0 +1,36 @@
+package ru.task.java.chapter4.task5.sub;
+
+import ru.task.java.chapter4.task5.Point;
+import ru.task.java.chapter4.task5.Shape;
+
+public class Line extends Shape implements Cloneable {
+
+    private Point pointTo;
+
+    public Line(Point from, Point to) {
+        super(from);
+        this.pointTo = to;
+    }
+
+    public void setPointTo(Point pointTo) {
+        this.pointTo = pointTo;
+    }
+
+    @Override
+    public Point getCenter() {
+        return new Point((point.getX() + pointTo.getX()) / 2, (point.getY() + pointTo.getY()) / 2);
+    }
+
+    @Override
+    public Line clone() throws CloneNotSupportedException {
+        return  (Line) super.clone();
+
+         // Глубокое клонирование
+         // Line newLine = (Line) super.clone();
+         // Point newPoint = new Point(pointTo.getX(), pointTo.getY());
+         // newLine.setPointTo(newPoint);
+         // return newLine;
+
+
+    }
+}
