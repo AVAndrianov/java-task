@@ -1,18 +1,17 @@
 package ru.task.java.chapter4.task10;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
 public class IntClassMethod {
     /**
-     * Метод выводит список всех методово класса int[]
-     * Что такое класс int[] == Array.class
+     * int[].class возвращает 0 декларированных методов
+     * не декларированные возвращаются методы класса Object
      */
-    public static void getIntAllMethod() {
-        Class<?> cl = Array.class;
-        for (Method m : cl.getDeclaredMethods()) {
+
+    private static void print(Method[] ms) {
+        for (Method m : ms) {
             System.out.println(Modifier.toString(m.getModifiers()) + " " +
                     m.getReturnType().getCanonicalName() + " " +
                     m.getName() + Arrays.toString(m.getParameters())
@@ -20,8 +19,9 @@ public class IntClassMethod {
         }
     }
 
-    public static void main(String[] args) throws IllegalAccessException {
-        IntClassMethod.getIntAllMethod();
-
+    public static void main(String[] args) {
+        Class<?> cl = int[].class;
+        print(cl.getDeclaredMethods());
+        print(cl.getMethods());
     }
 }

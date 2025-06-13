@@ -1,36 +1,25 @@
 package ru.task.java.chapter4.task12;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.time.Instant;
 
 public class MethodCall {
 
     public static void print() {
-        for (int i = 0; i < 1000; i++) {
-            System.out.print(i);
-        }
-        System.out.println();
     }
 
-    public static void main(String[] args) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-        /**
-         * Отличия в производительности
-         */
-        long date;
-        MethodCall methodCall = new MethodCall();
-        Method method = methodCall.getClass().getMethod("print");
-        /**
-         * Рефлексия
-         */
-        date = System.currentTimeMillis();
-        method.invoke(methodCall);
-        System.out.println(System.currentTimeMillis() - date);
+    public static void main(String[] args) throws Exception {
 
-        /**
-         * Прямой вызов
-         */
-        date = System.currentTimeMillis();
+        // Скорость выполнения метода отличается в среднем в 10 раз
+        Instant instant;
+
+        // Прямой вызов 7e-6
+        instant = Instant.now();
         MethodCall.print();
-        System.out.println(System.currentTimeMillis() - date);
+        System.out.println(java.time.Duration.between(instant, Instant.now()).toNanosPart());
+
+        // Рефлексия 7e-5
+        instant = Instant.now();
+        MethodCall.class.getMethod("print").invoke(null);
+        System.out.println(java.time.Duration.between(instant, Instant.now()).toNanosPart());
     }
 }

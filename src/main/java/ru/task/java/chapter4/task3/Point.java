@@ -2,12 +2,13 @@ package ru.task.java.chapter4.task3;
 
 import java.util.Objects;
 
-public class Point {
+public class Point extends ParentPoint{
 
-    private double x;
-    private double y;
+    protected double x;
+    protected double y;
 
     public Point(double x, double y) {
+        super();
         this.x = x;
         this.y = y;
     }

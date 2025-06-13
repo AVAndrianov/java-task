@@ -1,26 +1,35 @@
 package ru.task.java.chapter4.task7;
 
-
-import java.awt.*;
-
 public enum ColorEnum {
 
-    BLACK(Color.BLACK),
-    RED(Color.RED),
-    BLUE(Color.BLUE),
-    GREEN(Color.GREEN),
-    CYAN(Color.CYAN),
-    MAGENTA(Color.MAGENTA),
-    YELLOW(Color.YELLOW),
-    WHITE(Color.WHITE);
+    BLACK(0, 0, 0),
+    RED(255, 0, 0),
+    BLUE(0, 0, 255),
+    GREEN(0, 255, 0),
+    CYAN(0, 255, 255),
+    MAGENTA(255, 0, 255),
+    YELLOW(255, 255, 0),
+    WHITE(255, 255, 255);
 
-    private Color color;
+    private int red;
+    private int green;
+    private int blue;
 
-    ColorEnum(Color color) {
-        this.color = color;
+    ColorEnum(int red, int green, int blue) {
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
     }
 
-    public int gerColor() {
-        return color.getRGB();
+    public int getRed() {
+        return this.red;
+    }
+
+    public int getGreen() {
+        return this.green;
+    }
+
+    public int getBlue() {
+        return this.blue;
     }
 }
