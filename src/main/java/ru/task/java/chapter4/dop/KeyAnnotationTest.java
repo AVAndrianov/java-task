@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Animal {
+public class KeyAnnotationTest {
 
     public static class Cat {
         @Key
@@ -27,14 +27,14 @@ public class Animal {
         }
     }
 
-    public static <T> Object set(Class<T> clazz, Map<String, Object> map) throws Exception {
+    public static <T> T set(Class<T> clazz, Map<String, Object> map) throws Exception {
         Object obj = clazz.getDeclaredConstructor().newInstance();
         List<Field> fields = Arrays.stream(obj.getClass().getDeclaredFields()).filter(i -> i.isAnnotationPresent(Key.class)).collect(Collectors.toList());
         for (Field field : fields) {
             field.setAccessible(true);
             field.set(obj, map.get(field.getType().getSimpleName()));
         }
-        return obj;
+        return (T) obj;
     }
 
     public static void main(String[] args) throws Exception {

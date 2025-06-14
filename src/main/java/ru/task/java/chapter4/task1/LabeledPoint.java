@@ -7,7 +7,7 @@ public class LabeledPoint {
     private String label;
     private Point point;
 
-    public LabeledPoint(Point point, String label, double x, double y) {
+    public LabeledPoint(Point point, String label) {
         this.point = point;
         this.label = label;
 
@@ -26,14 +26,12 @@ public class LabeledPoint {
                 '}';
     }
 
+    //Пример equals и hashCode в случае агрегации
     @Override
     public boolean equals(Object o) {
-
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!point.equals(o)) return false;
-        LabeledPoint that = (LabeledPoint) o;
-        return Objects.equals(label, that.label);
+        return o instanceof LabeledPoint
+                && Objects.equals(point, ((LabeledPoint) o).point)
+                && Objects.equals(label, ((LabeledPoint) o).label);
     }
 
     @Override
@@ -44,6 +42,8 @@ public class LabeledPoint {
     }
 
     public static void main(String[] args) {
-        System.out.println(new LabeledPoint(new Point(1, 2), "sfsdf", 1, 2));
+        LabeledPoint labeledPoint1 = new LabeledPoint(new Point(1, 2), "Label");
+        LabeledPoint labeledPoint2 = new LabeledPoint(new Point(1, 2), "Label");
+        System.out.println(labeledPoint1.equals(labeledPoint2));
     }
 }

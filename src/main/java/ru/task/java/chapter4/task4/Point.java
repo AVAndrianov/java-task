@@ -2,7 +2,7 @@ package ru.task.java.chapter4.task4;
 
 import java.util.Objects;
 
-public class Point {
+public class Point implements Cloneable {
 
     private double x;
     private double y;
@@ -36,17 +36,11 @@ public class Point {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Point point = (Point) o;
-        return Double.compare(point.x, x) == 0 && Double.compare(point.y, y) == 0;
-    }
+
 
     @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
+    public Point clone() throws CloneNotSupportedException {
+        return (Point) super.clone();
+        //return new Point(x, y);
     }
-
 }

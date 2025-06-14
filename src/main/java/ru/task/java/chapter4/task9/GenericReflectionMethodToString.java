@@ -18,9 +18,8 @@ public class GenericReflectionMethodToString {
                                     try {
                                         return i.getName() + "=" + i.get(this);
                                     } catch (IllegalAccessException e) {
-                                        e.printStackTrace();
+                                        return new IllegalAccessException();
                                     }
-                                    return null;
                                 }
                         )
                         .toArray()

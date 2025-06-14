@@ -1,36 +1,23 @@
 package ru.task.java.chapter4.task3;
 
+
 import java.util.Objects;
 
 public class LabeledPoint extends Point {
 
-    private String label;
+    private final String label;
 
-    public LabeledPoint(String label, double x, double y) {
+    public LabeledPoint(double x, double y, String label) {
         super(x, y);
         this.label = label;
-
     }
 
-    public String getLabel() {
-        return label;
-    }
-
-    @Override
-    public String toString() {
-        System.out.println(x);
-        return super.toString() + " " + "LabeledPoint{" +
-                "label='" + label + '\'' +
-                '}';
-    }
-
+    //Пример equals и hashCode в случае наследования
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        LabeledPoint that = (LabeledPoint) o;
-        return Objects.equals(label, that.label);
+        return o instanceof LabeledPoint
+                && Objects.equals(label, ((LabeledPoint) o).label)
+                && super.equals(o);
     }
 
     @Override

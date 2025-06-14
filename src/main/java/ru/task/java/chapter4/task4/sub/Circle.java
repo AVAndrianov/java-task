@@ -3,7 +3,7 @@ package ru.task.java.chapter4.task4.sub;
 import ru.task.java.chapter4.task4.Point;
 import ru.task.java.chapter4.task4.Shape;
 
-public class Circle extends Shape {
+public class Circle extends Shape implements Cloneable {
 
     private double radius;
 
@@ -15,5 +15,10 @@ public class Circle extends Shape {
     @Override
     public Point getCenter() {
         return point;
+    }
+
+    @Override
+    public Circle clone() throws CloneNotSupportedException {
+        return (Circle) super.clone();
     }
 }
