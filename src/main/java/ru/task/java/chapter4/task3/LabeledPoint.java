@@ -15,8 +15,8 @@ public class LabeledPoint extends Point {
     //Пример equals и hashCode в случае наследования
     @Override
     public boolean equals(Object o) {
-        return o instanceof LabeledPoint
-                && Objects.equals(label, ((LabeledPoint) o).label)
+        return o instanceof LabeledPoint lp
+                && Objects.equals(label, lp.label)
                 && super.equals(o);
     }
 

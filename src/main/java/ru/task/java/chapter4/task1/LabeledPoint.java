@@ -4,13 +4,12 @@ import java.util.Objects;
 
 public class LabeledPoint {
 
-    private String label;
-    private Point point;
+    private final String label;
+    private final Point point;
 
     public LabeledPoint(Point point, String label) {
         this.point = point;
         this.label = label;
-
     }
 
     public String getLabel() {
@@ -29,9 +28,9 @@ public class LabeledPoint {
     //Пример equals и hashCode в случае агрегации
     @Override
     public boolean equals(Object o) {
-        return o instanceof LabeledPoint
-                && Objects.equals(point, ((LabeledPoint) o).point)
-                && Objects.equals(label, ((LabeledPoint) o).label);
+        return o instanceof LabeledPoint lp
+                && Objects.equals(point, lp.point)
+                && Objects.equals(label, lp.label);
     }
 
     @Override

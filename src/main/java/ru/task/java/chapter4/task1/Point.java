@@ -2,12 +2,12 @@ package ru.task.java.chapter4.task1;
 
 import java.util.Objects;
 
-public class Point {
+public final class Point {
 
-    protected double x;
-    protected double y;
+    private double x;
+    private double y;
 
-    public  Point(double x, double y) {
+    public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -30,9 +30,9 @@ public class Point {
 
     @Override
     public boolean equals(Object o) {
-        return o instanceof Point
-                && Objects.equals(x, ((Point) o).x)
-                && Objects.equals(y, ((Point) o).y);
+        return o instanceof Point p
+                && Objects.equals(x, p.x)
+                && Objects.equals(y, p.y);
     }
 
     @Override

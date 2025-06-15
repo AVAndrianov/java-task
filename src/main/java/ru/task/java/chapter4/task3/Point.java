@@ -17,9 +17,9 @@ public class Point {
 
     @Override
     public boolean equals(Object o) {
-        return o instanceof Point
-                && Objects.equals(x, ((Point) o).x)
-                && Objects.equals(y, ((Point) o).y);
+        return o instanceof Point p
+                && Objects.equals(x, p.x)
+                && Objects.equals(y, p.y);
     }
 
     @Override

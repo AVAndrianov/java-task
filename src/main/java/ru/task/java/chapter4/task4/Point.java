@@ -1,7 +1,5 @@
 package ru.task.java.chapter4.task4;
 
-import java.util.Objects;
-
 public class Point implements Cloneable {
 
     private double x;

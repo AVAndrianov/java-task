@@ -18,8 +18,13 @@ public class GenericReflectionMethodToString {
                                     try {
                                         return i.getName() + "=" + i.get(this);
                                     } catch (IllegalAccessException e) {
-                                        return new IllegalAccessException();
+                                        try {
+                                            throw new IllegalAccessException();
+                                        } catch (IllegalAccessException ex) {
+                                            ex.printStackTrace();
+                                        }
                                     }
+                                    return null;
                                 }
                         )
                         .toArray()
