@@ -13,7 +13,7 @@ public final class FloatPointNumber {
         String root =
                 System.getProperty("user.dir")
                         + System.getProperty("file.separator");
-        return new File(root + "src/main/java/ru/task/java/chapter5/task1/" + fileName);
+        return new File(root + "src/main/resources/chapter5/" + fileName);
     }
 
     public static ArrayList<Double> readValues(String fileName) throws FileNotFoundException, IllegalArgumentException {
