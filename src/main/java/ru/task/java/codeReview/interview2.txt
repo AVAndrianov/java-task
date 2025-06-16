@@ -1,0 +1,120 @@
+Пример 1
+
+    public Stream<Users> getUsersStream()
+        Connction conn = DataSourceObject.getConnection();    ->  1
+        Stream<Users> userStream = executeAndReturnStream(conn);
+        conn.close();     ->  2
+        return userStream;
+    }
+
+    public void processUsers() {
+        Stream<User> users = getUsersStream();
+        users.forEach(user -> System.out.prrint(user.getName()));     ->  3,4
+    }
+
+    //       1. Ошибка в имени класса Connction
+    //       2. Закрытие соединения с бд происходит до завершения работы со стримом
+    //       срим может обрабатывать данные асинхронно или лениво и при попытке обратится
+    //       к бд получается SQLException.
+    //       В данном случае используем userStream.onClose(conn::close) либо try-with-resources
+    //       3. map(User::getName)
+    //       4. Ошибка в слове prrint
+
+Пример 2
+
+    class User {
+        int id;
+        String name;
+    }
+
+    HashMap<User, String> map = new HashMap();
+
+	// В какой ситуации будет утерян элемент внутри map?
+
+    // 1. HashCode и equals не переопределены, значит у объектов с одинаковыми полями будут разные hashCode,
+    // при этом они и по equals будут разные потому что по ссылке будет сравнение.
+    // Возможно если по умолчанию используется рандомайзер, то при следующем старте приложение у объектов
+    // сгенерируется другой hashCode и в мапе их уже будет не найти
+    // 2. Если изменить объект после добавления в мапу.
+    // 3. Потеря ссылки на объект (после добавления в мапу присвоить ссылке значение null)
+    // 4. Несколько потоков меняют структуру hashMap
+
+Пример 3
+
+    public class Main {
+        public static void main(String[] args) {
+            A objA = new A();
+            B objB = new B();
+
+            objA.b = objB;  ->  2
+            objB.a = objA;
+
+            // Удалятся ли объекты A и B?
+            System.gc();    ->  1
+        }
+    }
+    //  1. Не гарантирует вызов сборщика мусора
+    //  2. Присутсвуеют перекрестные ссылки которые останутся по завершении основного потока
+    //  3. Тут объекты удалятся, тк гц не проверяет счетчик ссылок, а смотрит их достижимость с рутсета
+        (Утечки памяти в джаве бывают, если ссылки достижимы)
+
+Пример 4
+
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+
+
+        for (Integer integer : list) {
+            list.remove(1);
+        }
+    }
+
+    //  На второй итерации ConcurrentModificationException.
+
+Пример 5
+
+    public static void main(String[] args) {
+        var i = 8;
+        System.out.println(i++);
+        System.out.println(i + 1);
+        System.out.println(i);
+    }
+    //  Что выведет код?
+    //  8
+    //  10
+    //  9
+
+Пример 6
+
+    @Service
+    public class InvoiceService {
+
+        @Transactional
+        public void createPdf() {
+            // ...
+        }
+
+
+        public void create() {
+            createPdf();   -> 1
+        }
+    }
+
+    @Service
+    public class UserService {
+
+        @Autowired         -> 2
+        InvoiceService invoice;
+
+        public void createTest() {
+            invoice.create();
+        }
+    }
+
+    //  1. Вызов в обход транзакции
+    //  2. Инициализировать Бин лучше через конструктор
+    //  3. Названия create() и createPdf() недостаточно описательные
+    //  4. Отсутствие обработки исключений
