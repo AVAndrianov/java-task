@@ -19,5 +19,6 @@ public class Task4 {
     }
 
     //  На второй итерации ConcurrentModificationException.
+    //  тк for (Integer integer : list) создаст итератор под капотом, который fail-fast
 
 }
