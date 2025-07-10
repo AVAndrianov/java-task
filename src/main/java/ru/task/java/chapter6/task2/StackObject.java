@@ -15,8 +15,8 @@ public class StackObject<E> implements Stack<Object> {
     public void push(Object e) {
         if (arr == null) {
             arr = new Object[10];
-        } else {
-            Object[] tempArr = new Object[arr.length + (int) (arr.length * loadFactor)];
+        } else if (loadIndex >= arr.length / loadIndex) {
+            Object[] tempArr = new Object[arr.length * 2];
             System.arraycopy(arr, 0, tempArr, 0, arr.length);
             arr = tempArr;
         }

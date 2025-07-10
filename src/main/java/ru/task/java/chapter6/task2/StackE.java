@@ -15,8 +15,8 @@ public class StackE<E> implements Stack<E> {
     public void push(E e) {
         if (arr == null) {
             arr = (E[]) new Object[10];
-        } else {
-            E[] tempArr = Arrays.copyOf(arr, arr.length + (int) (arr.length * loadFactor), (Class<? extends E[]>) arr.getClass());
+        } else if (loadIndex >= arr.length / loadIndex) {
+            E[] tempArr = Arrays.copyOf(arr, arr.length * 2, (Class<? extends E[]>) arr.getClass());
             System.arraycopy(arr, 0, tempArr, 0, arr.length);
             arr = tempArr;
         }
@@ -32,7 +32,6 @@ public class StackE<E> implements Stack<E> {
 
     @Override
     public boolean isEmpty() {
-        Arrays.stream(arr).filter(Objects::nonNull).forEach(System.out::println);
         return Arrays.stream(arr).filter(Objects::nonNull).findAny().isEmpty();
     }
 

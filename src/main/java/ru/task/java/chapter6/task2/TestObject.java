@@ -2,8 +2,6 @@ package ru.task.java.chapter6.task2;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 public class TestObject {
 
     @Test
@@ -18,7 +16,6 @@ public class TestObject {
         StackObject<String> stack = new StackObject<>();
         stack.push("Hello");
         stack.push("World");
-        System.out.println(Arrays.toString(stack.getArr()));
         assert stack.pop().equals("World");
     }
 
