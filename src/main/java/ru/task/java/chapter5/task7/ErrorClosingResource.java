@@ -1,18 +1,29 @@
 package ru.task.java.chapter5.task7;
 
-import java.util.Scanner;
+import java.io.IOException;
+import java.io.InputStream;
 
-public final class ErrorClosingResource {
+public final class ErrorClosingResource extends InputStream {
+    @Override
+    public int read()  {
+        System.out.println("read");
 
-    public static void main(String[] args) {
-        // Исключение возникшее в блоке try будет отложено до выполнения блока finally
-        try (Scanner sc = new Scanner(System.in)) {
-            throw new RuntimeException();
+        try {
+            throw new IOException("Ошибка чтения из потока");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    @Override
+    public void close() {
+        System.out.println("close");
+        try {
+            throw new IOException("Имитация ошибки при закрытии");
         } catch (Exception e) {
-            System.err.println("Ошибка ввода: " + e.getMessage());
-            for (Throwable suppressed : e.getSuppressed()) {
-                System.err.println("Подавленное исключение: " + suppressed.getMessage());
-            }
+            e.printStackTrace();
         }
     }
+
 }

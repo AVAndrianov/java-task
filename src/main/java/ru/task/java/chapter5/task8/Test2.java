@@ -2,14 +2,14 @@ package ru.task.java.chapter5.task8;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-public final class RentalLock {
+public final class Test2 {
     int count = 0;
 
-    public ReentrantLockeWrapper helperRentalLock() {
-        try (ReentrantLockeWrapper reentrantLockeWrapper = new ReentrantLockeWrapper(new ReentrantLock())) {
-            reentrantLockeWrapper.getLock().lock();
+    public ReentrantLockWrapper helperRentalLock() {
+        try (ReentrantLockWrapper reentrantLockWrapper = new ReentrantLockWrapper(new ReentrantLock())) {
+            reentrantLockWrapper.getLock().lock();
             count++;
-            return reentrantLockeWrapper;
+            return reentrantLockWrapper;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -22,7 +22,7 @@ public final class RentalLock {
 
     public static void main(String[] args) {
         Runnable runnable = new Runnable() {
-            private final RentalLock rentalLock = new RentalLock();
+            private final Test2 rentalLock = new Test2();
 
             @Override
             public void run() {
@@ -40,7 +40,7 @@ public final class RentalLock {
         };
 
         Runnable runnable2 = new Runnable() {
-            private final RentalLock rentalLock = new RentalLock();
+            private final Test2 rentalLock = new Test2();
 
             @Override
             public void run() {
