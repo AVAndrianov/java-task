@@ -1,6 +1,6 @@
 package ru.task.java.chapter5.task5;
 
-import ru.task.java.chapter5.task1.FloatPointNumber;
+import ru.task.java.chapter5.task1.FileReaderCustom;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,12 +12,12 @@ import java.util.Scanner;
 
 public final class ExceptionHandlingScannerPrintWrite {
 
-    public static void print() throws FileNotFoundException {
+    public static void print() {
         Scanner in = null;
         PrintWriter out = null;
         try {
-            in = new Scanner(new File(String.valueOf(FloatPointNumber.getDirectories("listDoubleNumber.txt"))));
-            out = new PrintWriter(String.valueOf(FloatPointNumber.getDirectories("output.txt")));
+            in = new Scanner(new File(String.valueOf(FileReaderCustom.getDirectories("listDoubleNumber.txt"))));
+            out = new PrintWriter(String.valueOf(FileReaderCustom.getDirectories("output.txt")));
             while (in.hasNext()) {
                 out.println(in.next().toLowerCase(Locale.ROOT));
             }
@@ -30,12 +30,12 @@ public final class ExceptionHandlingScannerPrintWrite {
         } finally {
             try {
                 in.close();
-            } catch (NullPointerException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             try {
                 out.close();
-            } catch (NullPointerException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

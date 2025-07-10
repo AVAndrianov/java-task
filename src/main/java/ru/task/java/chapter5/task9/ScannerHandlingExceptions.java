@@ -1,6 +1,6 @@
 package ru.task.java.chapter5.task9;
 
-import ru.task.java.chapter5.task1.FloatPointNumber;
+import ru.task.java.chapter5.task1.FileReaderCustom;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,7 +23,7 @@ public class ScannerHandlingExceptions {
             System.out.println("Данные не найдены");
         }
 
-        try (Scanner scanner = new Scanner(new File(String.valueOf(FloatPointNumber.getDirectories("data.txt"))))) {
+        try (Scanner scanner = new Scanner(new File(String.valueOf(FileReaderCustom.getDirectories("data.txt"))))) {
             while (scanner.hasNext()) {
                 System.out.println(scanner.next());
             }

@@ -2,10 +2,11 @@ package ru.task.java.chapter5.task8;
 
 import java.util.concurrent.locks.Lock;
 
-public class ReentrantLockeWrapper implements AutoCloseable {
+public class ReentrantLockWrapper implements AutoCloseable {
+
     private Lock lock;
 
-    public ReentrantLockeWrapper(Lock lock) {
+    public ReentrantLockWrapper(Lock lock) {
         this.lock = lock;
     }
 

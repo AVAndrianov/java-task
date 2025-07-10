@@ -1,25 +1,24 @@
 package ru.task.java.chapter5.task12;
 
-import java.time.Instant;
 import java.util.Arrays;
 
 public final class SmallestValue {
 
     public static int min(int[] values) {
-        Instant instant;
-        instant = Instant.now();
+        long nanoTime = System.nanoTime();
         int minValue = Arrays.stream(values).min().orElse(-2);
         assert Arrays.stream(values).allMatch(i -> i >= minValue);
-        System.out.println("Разрешение: " + java.time.Duration.between(instant, Instant.now()).toNanosPart());
+        System.out.println("Разрешение-nanoTime: " + (System.nanoTime() - nanoTime));
 
-        instant = Instant.now();
+        nanoTime = System.nanoTime();
         int minValue2 = Arrays.stream(values).min().orElse(-2);
         Arrays.stream(values).allMatch(i -> i >= minValue2);
-        System.out.println("Запрещено:  " + java.time.Duration.between(instant, Instant.now()).toNanosPart());
+        System.out.println("Запрещено-nanoTime : " + (System.nanoTime() - nanoTime));
 
-        instant = Instant.now();
+
+        nanoTime = System.nanoTime();
         int minValue3 = Arrays.stream(values).min().orElse(-2);
-        System.out.println("Исключено:  " + java.time.Duration.between(instant, Instant.now()).toNanosPart());
+        System.out.println("Исключено-nanoTime : " + (System.nanoTime() - nanoTime));
 
         return -1;
 
