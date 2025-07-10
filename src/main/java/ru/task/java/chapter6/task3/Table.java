@@ -1,25 +1,30 @@
 package ru.task.java.chapter6.task3;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Table<K, V> {
 
-    Map<K, V> map = new HashMap<>();
+    List<Entry<K, V>> list = new ArrayList<>();
 
     public void add(K k, V v) {
-        map.put(k, v);
+        list.add(new Entry<>(k, v));
     }
 
     public void put(K k, V v) {
-        map.put(k, v);
+        list.stream().filter(entry -> entry.getK() == k).findFirst().ifPresentOrElse(
+                entry -> entry.setV(v),
+                () -> list.add(new Entry<>(k, v))
+        );
     }
 
     public void remove(K k) {
-        map.remove(k);
+        list.stream().filter(entry -> entry.getK() == k).findFirst().ifPresent(
+                entry -> list.remove(entry)
+        );
     }
 
-    public Map<K, V> getMap() {
-        return map;
+    public List<Entry<K, V>> getList() {
+        return list;
     }
 }

@@ -28,6 +28,7 @@ public class Table<K, V> {
         return list;
     }
 
+    // вложенный статический класс нельзя изменять напрямую из за пределов фреймворка по этому он package private
     static class Entry<K, V> {
         public Entry(K k, V v) {
             this.k = k;
