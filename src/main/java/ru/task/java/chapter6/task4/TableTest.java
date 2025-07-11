@@ -2,7 +2,7 @@ package ru.task.java.chapter6.task4;
 
 import org.junit.Test;
 
-public class Test1 {
+public class TableTest {
 
     @Test
     public void addElementTable() {

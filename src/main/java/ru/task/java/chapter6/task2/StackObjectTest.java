@@ -2,7 +2,7 @@ package ru.task.java.chapter6.task2;
 
 import org.junit.Test;
 
-public class TestObject {
+public class StackObjectTest {
 
     @Test
     public void addElementStack() {
