@@ -5,52 +5,49 @@ import java.util.List;
 
 public class Table<K, V> {
 
-    private List<Entry<K, V>> list = new ArrayList<>();
+    private final List<Entry> list = new ArrayList<>();
 
     public void add(K k, V v) {
-        list.add(new Entry<>(k, v));
+        list.add(new Entry(k, v));
     }
 
     public void put(K k, V v) {
         list.stream().filter(entry -> entry.getK() == k).findFirst().ifPresentOrElse(
                 entry -> entry.setV(v),
-                () -> list.add(new Entry<>(k, v))
+                () -> list.add(new Entry(k, v))
         );
     }
 
     public void remove(K k) {
-        list.stream().filter(entry -> entry.getK() == k).findFirst().ifPresent(
-                entry -> list.remove(entry)
-        );
+        list.stream().filter(entry -> entry.getK() == k).findFirst().ifPresent(list::remove);
     }
 
-    public List<Entry<K, V>> getList() {
+    public List<Entry> getList() {
         return list;
     }
 
-    // вложенный статический класс нельзя изменять напрямую из за пределов фреймворка по этому он package private
-    static class Entry<K, V> {
-        public Entry(K k, V v) {
+    public static class Entry {
+        public Entry(Object k, Object v) {
             this.k = k;
             this.v = v;
         }
 
-        private K k;
-        private V v;
+        private Object k;
+        private Object v;
 
-        public K getK() {
+        public Object getK() {
             return k;
         }
 
-        public V getV() {
-            return v;
-        }
-
-        public void setK(K k) {
+        public void setK(Object k) {
             this.k = k;
         }
 
-        public void setV(V v) {
+        public Object getV() {
+            return v;
+        }
+
+        public void setV(Object v) {
             this.v = v;
         }
     }

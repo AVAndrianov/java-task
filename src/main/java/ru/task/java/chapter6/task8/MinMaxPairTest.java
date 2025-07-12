@@ -1,7 +1,6 @@
 package ru.task.java.chapter6.task8;
 
 import org.junit.Test;
-import ru.task.java.chapter6.task7.Pair;
 
 public class MinMaxPairTest {
 

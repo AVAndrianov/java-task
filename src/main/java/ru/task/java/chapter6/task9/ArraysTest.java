@@ -13,7 +13,8 @@ public class ArraysTest {
         list.add(2);
         list.add(4);
         list.add(3);
-        assert new Arrays().firstLast(list).toString().equals("Pair{e1=1, e2=3}");
+        assert Arrays.firstLast(list).e1().equals(1)
+                && Arrays.firstLast(list).e2().equals(3);
     }
 
     @Test
@@ -23,6 +24,29 @@ public class ArraysTest {
         list.add("2");
         list.add("3");
         list.add("4");
-        assert new Arrays().firstLast(list).toString().equals("Pair{e1=1, e2=4}");
+        assert Arrays.firstLast(list).e1().equals("1")
+                && Arrays.firstLast(list).e2().equals("4");
+    }
+    @Test
+    public void objectArraysTest() {
+        ArrayList<Object> list = new ArrayList<>();
+        list.add(0.1d);
+        list.add(0.2F);
+        list.add(1);
+        list.add(new Object());
+        list.add("Hello");
+        list.forEach(System.out::println);
+        assert Arrays.firstLast(list).e1().equals(0.1)
+                && Arrays.firstLast(list).e2().equals("Hello");
+    }
+    @Test
+    public void numberArraysTest() {
+        ArrayList<Number> list = new ArrayList<>();
+        list.add(0.1d);
+        list.add(0.2F);
+        list.add(1);
+        list.forEach(System.out::println);
+        assert Arrays.firstLast(list).e1().equals(0.1)
+                && Arrays.firstLast(list).e2().equals(1);
     }
 }

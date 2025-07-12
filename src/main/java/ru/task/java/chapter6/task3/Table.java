@@ -5,21 +5,24 @@ import java.util.List;
 
 public class Table<K, V> {
 
-    List<Entry<K, V>> list = new ArrayList<>();
+    private List<Entry<K, V>> list = new ArrayList<>();
 
     public void add(K k, V v) {
         list.add(new Entry<>(k, v));
     }
 
     public void put(K k, V v) {
-        list.stream().filter(entry -> entry.getK() == k).findFirst().ifPresentOrElse(
-                entry -> entry.setV(v),
+        list.stream().filter(entry -> entry.k() == k).findFirst().ifPresentOrElse(
+                entry -> {
+                    list.remove(entry);
+                    list.add(new Entry<>(k, v));
+                },
                 () -> list.add(new Entry<>(k, v))
         );
     }
 
     public void remove(K k) {
-        list.stream().filter(entry -> entry.getK() == k).findFirst().ifPresent(
+        list.stream().filter(entry -> entry.k() == k).findFirst().ifPresent(
                 entry -> list.remove(entry)
         );
     }
