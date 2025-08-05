@@ -1,6 +1,6 @@
 package ru.task.java.chapter6.task13;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Comparator;

@@ -1,30 +1,36 @@
 package ru.task.java.chapter6.task7;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PairTest {
 
     @Test
     public void createStringPair() {
         Pair<String> pair = new Pair<>("Hello", "World");
-        assert pair.e1().equals("Hello") && pair.e2().equals("World");
+        assertEquals(pair.e1(), "Hello");
+        assertEquals(pair.e2(), "World");
     }
 
     @Test
     public void createDoublePair() {
         Pair<Double> pair = new Pair<>(0.1, 0.2);
-        assert pair.e1().equals(0.1) && pair.e2().equals(0.2);
+        assertEquals(pair.e1(), 0.1);
+        assertEquals(pair.e2(), 0.2);
     }
 
     @Test
     public void createPair() {
         Pair<Integer> pair = new Pair<>(+0, -0);
-        assert pair.e1().equals(0) && pair.e2().equals(0);
+        assertEquals(pair.e1(), 0);
+        assertEquals(pair.e2(), 0);
     }
 
     @Test
     public void createDoubleNanPair() {
         Pair<Double> pair = new Pair<>(0.0, Double.NaN);
-        assert pair.e1().equals(0.0) && pair.e2().equals(Double.NaN);
+        assertEquals(pair.e1(), 0.0);
+        assertEquals(pair.e2(), Double.NaN);
     }
 }

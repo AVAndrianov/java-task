@@ -1,8 +1,11 @@
 package ru.task.java.chapter6.task10;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import ru.task.java.chapter6.task9.Arrays;
 
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ArraysTest {
 
@@ -13,7 +16,7 @@ public class ArraysTest {
         list.add(2);
         list.add(3);
         list.add(4);
-        assert new Arrays().firstLast(list).max().toString().equals("4");
+        assertEquals(Arrays.findMax(list), 4);
     }
 
     @Test
@@ -23,6 +26,6 @@ public class ArraysTest {
         list.add("2");
         list.add("3");
         list.add("4");
-        assert new Arrays().firstLast(list).min().toString().equals("1");
+        assertEquals(Arrays.findMin(list), "1");
     }
 }

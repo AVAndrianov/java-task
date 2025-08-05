@@ -1,8 +1,10 @@
 package ru.task.java.chapter6.task9;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ArraysTest {
 
@@ -13,8 +15,8 @@ public class ArraysTest {
         list.add(2);
         list.add(4);
         list.add(3);
-        assert Arrays.firstLast(list).e1().equals(1)
-                && Arrays.firstLast(list).e2().equals(3);
+        assertEquals(Arrays.firstLast(list).e1(), 1);
+        assertEquals(Arrays.firstLast(list).e2(), 3);
     }
 
     @Test
@@ -27,6 +29,7 @@ public class ArraysTest {
         assert Arrays.firstLast(list).e1().equals("1")
                 && Arrays.firstLast(list).e2().equals("4");
     }
+
     @Test
     public void objectArraysTest() {
         ArrayList<Object> list = new ArrayList<>();
@@ -39,6 +42,7 @@ public class ArraysTest {
         assert Arrays.firstLast(list).e1().equals(0.1)
                 && Arrays.firstLast(list).e2().equals("Hello");
     }
+
     @Test
     public void numberArraysTest() {
         ArrayList<Number> list = new ArrayList<>();

@@ -1,7 +1,10 @@
 package ru.task.java.chapter6.task9;
 
 
+import ru.task.java.chapter6.task7.Pair;
+
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Arrays {
     private Arrays() {
@@ -11,6 +14,16 @@ public class Arrays {
         return new Pair<>(a.get(0), a.get(a.size() - 1));
     }
 
-    public static record Pair<E>(E e1, E e2) {
+    public static <E extends Comparable<? super E>> Pair<E> minMax(ArrayList<E> a) {
+        return new Pair<>(Collections.min(a), Collections.max(a));
+    }
+
+    public static <E extends Comparable<? super E>> E findMax(ArrayList<E> a) {
+        return Collections.max(a);
+    }
+
+    public static <E extends Comparable<? super E>> E findMin(ArrayList<E> a) {
+        return Collections.min(a);
+
     }
 }

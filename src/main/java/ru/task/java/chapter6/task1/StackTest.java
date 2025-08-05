@@ -1,29 +1,29 @@
 package ru.task.java.chapter6.task1;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class StackTest {
 
     @Test
     public void addElementStack() {
-        StackE<String> stackE = new StackE<>();
-        stackE.push("Hello");
-        assert !stackE.isEmpty();
+        StackManagesListArrays<String> stackManagesListArrays = new StackManagesListArrays<>();
+        stackManagesListArrays.push("Hello");
+        assert !stackManagesListArrays.isEmpty();
     }
 
     @Test
     public void popElementStack() {
-        StackE<String> stackE = new StackE<>();
-        stackE.push("Hello");
-        stackE.push("World");
-        assert stackE.pop().equals("World");
+        StackManagesListArrays<String> stackManagesListArrays = new StackManagesListArrays<>();
+        stackManagesListArrays.push("Hello");
+        stackManagesListArrays.push("World");
+        assert stackManagesListArrays.pop().equals("World");
     }
 
     @Test
     public void isEmptyElementStack() {
-        StackE<String> stackE = new StackE<>();
-        stackE.push("Hello");
-        stackE.pop();
-        assert stackE.isEmpty();
+        StackManagesListArrays<String> stackManagesListArrays = new StackManagesListArrays<>();
+        stackManagesListArrays.push("Hello");
+        stackManagesListArrays.pop();
+        assert stackManagesListArrays.isEmpty();
     }
 }

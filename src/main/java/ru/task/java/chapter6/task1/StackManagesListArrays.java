@@ -2,7 +2,7 @@ package ru.task.java.chapter6.task1;
 
 import java.util.ArrayList;
 
-public class StackE<E> implements Stack<E> {
+public class StackManagesListArrays<E> implements Stack<E> {
 
     private ArrayList<E> list = new ArrayList<>();
 

@@ -1,6 +1,6 @@
 package ru.task.java.chapter6.task14;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class ImprovedVersionCloseAllMethodTest {
 
     @Test
-    public void improvedVersionCloseAllMethod() throws Exception {
+    public void improvedVersionCloseAllMethod() {
         ArrayList<ImprovedVersionCloseAllMethod.MyResource> list = new ArrayList<>();
         list.add(new ImprovedVersionCloseAllMethod.MyResource());
         list.add(new ImprovedVersionCloseAllMethod.MyResource());

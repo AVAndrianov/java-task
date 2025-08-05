@@ -1,7 +1,10 @@
 package ru.task.java.chapter6.task11;
 
-import org.junit.Test;
-import ru.task.java.chapter6.task10.Arrays;
+import org.junit.jupiter.api.Test;
+import ru.task.java.chapter6.task9.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 import java.util.ArrayList;
 
@@ -14,6 +17,7 @@ public class ArraysTest {
         list.add(4);
         list.add(2);
         list.add(3);
-        assert new Arrays().minMax(list).toString().equals("Pair{e1=1, e2=4}");
+        assertEquals(Arrays.minMax(list).e1(),1);
+        assertEquals(Arrays.minMax(list).e2(),4);
     }
 }
