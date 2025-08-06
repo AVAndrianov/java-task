@@ -2,7 +2,6 @@ package ru.task.java.chapter6.task5;
 
 public class VariableLengthArgumentArray {
 
-    @SafeVarargs
     public static <T> T[] swap(int i, int j, T... values) {
         T temp = values[i];
         values[i] = values[j];
