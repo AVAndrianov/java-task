@@ -21,6 +21,7 @@ public class VariableLengthArgumentArray {
 //        Double[] result = VariableLengthArgumentArray.<Double>swap(0, 1, 1.5, 2, 3);
 
         //Необходимо передавать значения одного типа
+        //Unnecessary boxing 'Double.valueOf(3)'  оставил для примера того как можго получить объект Double
         Double[] result = VariableLengthArgumentArray.<Double>swap(0, 1, 1.5, 2.0, Double.valueOf(3));
     }
 }
