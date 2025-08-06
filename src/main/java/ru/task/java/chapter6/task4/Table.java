@@ -2,30 +2,35 @@ package ru.task.java.chapter6.task4;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Table<K, V> {
 
     private final List<Entry<K, V>> list = new ArrayList<>();
 
-    public void add(K k, V v) {
-        list.add(new Entry<>(k, v));
+    public V get(K k) {
+        for (Entry<K, V> entry : list) {
+            if (Objects.equals(entry.getK(), k)) {
+                return entry.getV();
+            }
+        }
+        return null;
     }
 
     public void put(K k, V v) {
-        list.stream().filter(
-                entry -> entry.getK() == k
-        ).findFirst().ifPresentOrElse(
-                entry -> entry.setV(v),
-                () -> list.add(new Entry<>(k, v))
-        );
+        for (Entry<K, V> entry : list) {
+            if (Objects.equals(entry.getK(), k)) {
+                entry.setV(v);
+                return;
+            }
+        }
+        list.add(new Entry<>(k, v));
     }
 
     public void remove(K k) {
-        list.stream().filter(entry -> entry.getK() == k).findFirst().ifPresent(list::remove);
-    }
-
-    public List<Entry<K, V>> getList() {
-        return list;
+        list.removeIf(
+                entry -> Objects.equals(entry.getK(), k)
+        );
     }
 
     public static class Entry<K, V> {

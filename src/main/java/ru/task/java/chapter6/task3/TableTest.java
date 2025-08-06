@@ -45,6 +45,4 @@ public class TableTest {
         table.put(1, "Hello");
         assertDoesNotThrow(() -> table.remove(2));
     }
-
-
 }

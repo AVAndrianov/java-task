@@ -9,28 +9,20 @@ public class Table<K, V> {
     private final List<Entry<K, V>> list = new ArrayList<>();
 
     public V get(K k) {
-        return Objects.requireNonNull(
-                list.stream().filter(
-                        entry -> entry.k().equals(k)
-                ).findFirst().orElse(null)
-        ).v();
+        for (Entry<K, V> entry : list) {
+            if (Objects.equals(entry.k(), k)) {
+                return entry.v();
+            }
+        }
+        return null;
     }
 
     public void put(K k, V v) {
-        list.stream().filter(entry -> entry.k().equals(k)).findFirst().ifPresentOrElse(
-                entry -> {
-                    list.remove(entry);
-                    list.add(new Entry<>(k, v));
-                },
-                () -> list.add(new Entry<>(k, v))
-        );
+        remove(k);
+        list.add(new Entry<>(k, v));
     }
 
     public void remove(K k) {
-        list.stream().filter(
-                entry -> entry.k().equals(k)
-        ).findFirst().ifPresent(
-                list::remove
-        );
+        list.removeIf(entry -> Objects.equals(entry.k(), k));
     }
 }

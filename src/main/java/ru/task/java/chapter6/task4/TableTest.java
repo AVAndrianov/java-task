@@ -1,16 +1,19 @@
 package ru.task.java.chapter6.task4;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TableTest {
 
     @Test
-    public void addElementTable() {
+    public void getElementTable() {
         Table<Integer, String> table = new Table<>();
-        table.add(1, "Hello");
-        table.add(2, "Hello");
-        table.getList().stream().map(i -> i.getK() + i.getV()).forEach(System.out::println);
-        assert table.getList() != null;
+        table.put(1, "Hello");
+        table.put(2, "World");
+        assertEquals(table.get(1), "Hello");
+        assertEquals(table.get(2), "World");
     }
 
     @Test
@@ -20,9 +23,8 @@ public class TableTest {
         table.put(2, "World");
         table.put(2, "Hello");
         table.put(1, "World");
-        assert table.getList().stream()
-                .filter(i -> i.getK() == 1).map(Table.Entry::getV).collect(java.util.stream.Collectors.joining())
-                .equals("World");
+        assertEquals(table.get(2), "Hello");
+        assertEquals(table.get(1), "World");
     }
 
     @Test
@@ -30,7 +32,16 @@ public class TableTest {
         Table<Integer, String> table = new Table<>();
         table.put(1, "Hello");
         table.remove(1);
-        assert table.getList().isEmpty();
+        assertThrows(NullPointerException.class, () -> {
+            table.get(1);
+            throw new NullPointerException();
+        });
+    }
 
+    @Test
+    public void removeElementWhichNotTable() {
+        Table<Integer, String> table = new Table<>();
+        table.put(1, "Hello");
+        assertDoesNotThrow(() -> table.remove(2));
     }
 }
