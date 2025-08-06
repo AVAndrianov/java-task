@@ -15,22 +15,15 @@ public class MethodForConstructingArrays {
 
     }
 
-//    @SafeVarargs
     public void metod() {
-        // Используем собственный Arrays.construct метод
-        List<String>[] result = Arrays.<List<String>>construct(10);
+        List<String>[] result = Arrays.construct(10);
 
-        // Инициализируем каждый элемент массива списками!
         for (int i = 0; i < result.length; i++) {
-            result[i] = new ArrayList<>(); // Создаем новый список для каждого элемента
+            result[i] = new ArrayList<>();
         }
 
-        // Теперь можно безопасно добавлять элементы в списки
         result[0].add("Hello");
         result[1].add("World");
-
-        // Печатаем массив (для демонстрации)
-//        System.out.println(Arrays.toString(result));
     }
 
     public static class Arrays {

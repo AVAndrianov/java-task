@@ -1,6 +1,5 @@
 package ru.task.java.chapter6.task18;
 
-import java.util.Arrays;
 import java.util.function.IntFunction;
 
 public class Repeat {

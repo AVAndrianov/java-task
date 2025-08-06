@@ -5,8 +5,11 @@ import ru.task.java.chapter6.task7.Pair;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Arrays {
+
     private Arrays() {
     }
 
@@ -24,6 +27,5 @@ public class Arrays {
 
     public static <E extends Comparable<? super E>> E findMin(ArrayList<E> a) {
         return Collections.min(a);
-
     }
 }

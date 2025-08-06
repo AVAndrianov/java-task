@@ -12,7 +12,6 @@ public class ImproveDoWorkMethod {
     }
 
     public static void main(String[] args) throws Exception {
-        // Пример использования (требуется экземпляр исключения):
         String result = doWork(() -> "Work done!", new Exception("Something went wrong"));
         System.out.println(result);
     }

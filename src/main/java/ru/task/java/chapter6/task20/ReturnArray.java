@@ -16,8 +16,11 @@ public class ReturnArray {
     @SafeVarargs
     public static final <T> T[] repeat(int n, T... objs) {
         Class<?> originClass = objs.getClass().getComponentType();
+        @SuppressWarnings("unchecked")
         T[] arr = (T[]) Array.newInstance(originClass, 10);
-        Arrays.fill(arr, objs);
+        for (int i = 0; i < n; i++) {
+            Arrays.fill(arr, objs);
+        }
         return arr;
     }
 

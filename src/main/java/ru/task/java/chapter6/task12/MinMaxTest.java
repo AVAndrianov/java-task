@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class MinMaxTest {
-    LargestSmallest largestSmallest = new LargestSmallest();
 
     @Test
     public void minMaxTest() {
