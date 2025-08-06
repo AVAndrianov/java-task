@@ -11,7 +11,8 @@ public class ReadingSentences {
         String str = """
                 Напишите программу для чтения предложения в списочный массив. Затем перетасуйте
                 в массиве все слова, кроме первого и последнего, используя метод
-                Collections. shuffle (), но не копируя слова в другую коллекцию.""";
+                Collections. shuffle (), но не копируя слова в другую коллекцию.
+                """;
         List<String> list = Arrays.stream(str.split(" ")).collect(Collectors.toList());
         Collections.shuffle(list.subList(1, list.size() - 1));
         list.forEach(System.out::println);
