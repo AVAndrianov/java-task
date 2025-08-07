@@ -1,15 +1,15 @@
 package ru.task.java.chapter6.task14;
 
-import java.util.Collection;
+import java.util.ArrayList;
 
 public class ImprovedVersionCloseAllMethod {
 
-    public static void closeAll(Collection<? extends AutoCloseable> resources) throws Exception {
+    public static <E extends AutoCloseable> void closeAll(ArrayList<E> elems) throws Exception {
         Exception primaryException = null;
-        for (AutoCloseable resource : resources) {
+        for (E elem : elems) {
             try {
-                if (resource != null) {
-                    resource.close();
+                if (elem != null) {
+                    elem.close();
                 }
             } catch (Exception e) {
                 if (primaryException == null) {
