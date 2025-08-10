@@ -1,23 +1,24 @@
 package ru.task.java.chapter6.task21;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MethodForConstructingArrays {
 
     public static void main(String[] args) {
-        List<String>[] result = construct(List.class, 10);
+        Integer[] result = construct(10, 1);
         for (int i = 0; i < result.length; i++) {
-            result[i] = new ArrayList<>();
+            result[i] = i;
         }
-        result[0].add("Hello");
-        result[1].add("World");
+        System.out.println(java.util.Arrays.toString(result));
     }
 
-    public static <T> T[] construct(Class<T> clazz, int size) {
-        @SuppressWarnings("unchecked")
-        T[] arr = (T[]) Array.newInstance(clazz, size);
-        return arr;
+    @SafeVarargs
+    @SuppressWarnings("unchecked")
+    public static <T> T[] construct(int length, T... dummy) {
+        if (dummy.length == 0) {
+            throw new IllegalArgumentException("");
+        }
+        Class<?> clazz = dummy.getClass().getComponentType();
+        return (T[]) Array.newInstance(clazz, length);
     }
 }

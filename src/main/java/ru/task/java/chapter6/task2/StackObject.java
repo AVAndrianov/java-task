@@ -2,7 +2,7 @@ package ru.task.java.chapter6.task2;
 
 import ru.task.java.chapter6.task1.Stack;
 
-public class StackObject<E> implements Stack<Object> {
+public class StackObject implements Stack<Object> {
 
     private Object[] arr;
     private int loadIndex = 0;

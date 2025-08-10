@@ -13,6 +13,9 @@ public class StackManagesListArrays<E> implements Stack<E> {
 
     @Override
     public E pop() {
+        if (list.isEmpty()) {
+            throw new IllegalStateException("");
+        }
         E e = list.get(list.size() - 1);
         list.remove(list.size() - 1);
         return e;

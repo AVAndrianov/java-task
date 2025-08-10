@@ -2,6 +2,8 @@ package ru.task.java.chapter6.task1;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class StackTest {
 
     @Test
@@ -25,5 +27,11 @@ public class StackTest {
         stackManagesListArrays.push("Hello");
         stackManagesListArrays.pop();
         assert stackManagesListArrays.isEmpty();
+    }
+
+    @Test
+    public void popIsEmptyElementStack() {
+        StackManagesListArrays<String> stackManagesListArrays = new StackManagesListArrays<>();
+        assertThrows(IllegalStateException.class, stackManagesListArrays::pop);
     }
 }

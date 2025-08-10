@@ -10,6 +10,7 @@ public class MaxMinTest {
 
     @Test
     public void maxMinTest() {
+        LargestSmallest largestSmallest = new LargestSmallestImpl();
         List<String> list = new ArrayList<>();
         List<String> list2 = new ArrayList<>();
         list.add("1");
@@ -19,5 +20,6 @@ public class MaxMinTest {
         list.add("55555a");
         list.add("55555A");
         LargestSmallest2.maxmin(list, Comparator.naturalOrder(), list2);
+        largestSmallest.minmax(list, Comparator.naturalOrder(), list2);
     }
 }
