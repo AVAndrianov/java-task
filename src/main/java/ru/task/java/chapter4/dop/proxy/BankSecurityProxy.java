@@ -14,7 +14,6 @@ public class BankSecurityProxy implements Bank {
             throw new SecurityException("User can't change money value");
         }
         bank.setUserMoney(user, money);
-
     }
 
     @Override
@@ -23,15 +22,12 @@ public class BankSecurityProxy implements Bank {
             throw new SecurityException("User can't get money value");
         }
         return bank.getUserMoney(user);
-
     }
 
     public static void main(String[] args) {
         User user = new User();
         Bank bank = new CitiBank();
-
         bank = new BankSecurityProxy(bank);
-
         bank.setUserMoney(user, 6876);
     }
 }
