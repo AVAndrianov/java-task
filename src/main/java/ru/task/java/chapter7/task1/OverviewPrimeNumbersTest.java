@@ -3,44 +3,40 @@ package ru.task.java.chapter7.task1;
 import org.junit.jupiter.api.Test;
 
 import java.util.BitSet;
-import java.util.Comparator;
 import java.util.HashSet;
-import java.util.Iterator;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OverviewPrimeNumbersTest {
 
     @Test
-    public void hashSetTest() {
-        HashSet<Integer> hashSet = new HashSet<>();
+    public void getHashSetTest() {
+
+        Set<Integer> hashSet = new HashSet<>();
         for (int i = 2; i < 100; i++) {
             hashSet.add(i);
         }
-        Iterator<Integer> iterator = hashSet.iterator();
-        Integer smallestElement = hashSet.stream().min(Comparator.naturalOrder()).orElseThrow(RuntimeException::new);
-        Integer j = 1;
-        while (iterator.hasNext()) {
-            if (iterator.next() == smallestElement * (smallestElement + j)) {
-                j++;
-                iterator.remove();
-            }
-        }
-        hashSet.forEach(System.out::println);
+
+        Set<Integer> result = HashBitSet.getHashSet(hashSet);
+
+        assertTrue(result.contains(13));
+        assertFalse(result.contains(6));
+        assertTrue(hashSet.containsAll(result));
     }
 
     @Test
-    public void bitSetTest() {
+    public void getBitSetTest() {
+
         BitSet bitSet = new BitSet();
         for (int i = 2; i < 100; i++) {
             bitSet.set(i);
         }
-        int smallestElement = bitSet.stream().min().orElseThrow(RuntimeException::new);
-        int j = 1;
-        for (int i = bitSet.nextSetBit(0); i >= 0; i = bitSet.nextSetBit(i + 1)) {
-            if (i == smallestElement * (smallestElement + j)) {
-                j++;
-                bitSet.clear(i);
-            }
-        }
-        bitSet.stream().forEach(System.out::println);
+
+        BitSet result = HashBitSet.getBitSet(bitSet);
+
+        assertTrue(result.get(13));
+        assertFalse(result.get(6));
     }
 }
