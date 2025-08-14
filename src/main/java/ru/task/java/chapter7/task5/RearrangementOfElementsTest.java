@@ -16,7 +16,6 @@ public class RearrangementOfElementsTest {
     public void rearrangementOfElementsWithoutRandomAccessTest() {
         List<Integer> list = new ArrayList<>(List.of(1, 2, 3));
 
-        @SuppressWarnings("unchecked")
         List<Integer> result = (List<Integer>) RearrangementOfElements.swap(list, 0, 2);
 
         assertTrue(list.containsAll(result));
@@ -28,7 +27,6 @@ public class RearrangementOfElementsTest {
     public void rearrangementOfElementsWithRandomAccessTest() {
         List<Integer> linkedList = new LinkedList<>(Arrays.asList(1, 2, 3));
 
-        @SuppressWarnings("unchecked")
         List<Integer> result = (List<Integer>) RearrangementOfElements.swap(linkedList, 0, 2);
 
         assertTrue(linkedList.containsAll(result));
