@@ -8,6 +8,10 @@ import java.util.RandomAccess;
 
 public final class RearrangementOfElements {
 
+    private RearrangementOfElements() {
+        throw new UnsupportedOperationException();
+    }
+
     public static List<?> swap(List<?> list, int i, int j) {
         Object tempI = null;
         Object tempJ = null;

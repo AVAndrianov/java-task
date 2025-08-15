@@ -7,6 +7,10 @@ import java.util.Set;
 
 public final class HashBitSet {
 
+    private HashBitSet() {
+        throw new UnsupportedOperationException();
+    }
+
     public static Set<Integer> getHashSet(Set<Integer> hashSet) {
         if (hashSet.isEmpty()) {
             return hashSet;
