@@ -8,27 +8,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-public final class InsteadConcrete {
+public class InsteadConcrete {
 
-    private InsteadConcrete() {
-        throw new UnsupportedOperationException();
-    }
-
-    public static TreeMap<String, Set<Integer>> getTreeMap(Map<String, Set<Integer>> map) {
-        TreeMap<String, Set<Integer>> treeMap = new TreeMap<>(map);
-        treeMap.put("1", new LinkedHashSet<>(List.of(1, 2, 3, 1, 4)));
-        return treeMap;
-    }
-
-    public static HashMap<String, Set<Integer>> getHashMap(Map<String, Set<Integer>> map) {
-        HashMap<String, Set<Integer>> hashMap = new HashMap<>(map);
-        hashMap.put("1", new LinkedHashSet<>(List.of(1, 2, 3, 1, 4)));
-        return hashMap;
-    }
-
-    public static LinkedHashMap<String, Set<Integer>> getLinkedHashMap(Map<String, Set<Integer>> map) {
-        LinkedHashMap<String, Set<Integer>> linkedHashMap = new LinkedHashMap<>(map);
-        linkedHashMap.put("1", new LinkedHashSet<>(List.of(1, 2, 3, 1, 4)));
-        return linkedHashMap;
+    public static void main(String[] args) {
+        Map<String, Set<Integer>> hashMap = new HashMap<>();
+        Map<String, Set<Integer>> linkedHashMap = new LinkedHashMap<>();
+        Map<String, Set<Integer>> treeMap = new TreeMap<>();
     }
 }
