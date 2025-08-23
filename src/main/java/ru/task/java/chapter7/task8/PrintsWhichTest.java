@@ -16,7 +16,7 @@ public class PrintsWhichTest {
     private File file;
 
     @BeforeEach
-    public void setUp() throws IOException {
+    void setUp() throws IOException {
         file = Files.createTempFile("test", "txt").toFile();
         try (FileWriter writer = new FileWriter(file)) {
             writer.append("Напишите программу, которая считывает").append(System.lineSeparator());
@@ -30,7 +30,7 @@ public class PrintsWhichTest {
     }
 
     @Test
-    public void readingAllWordsTest() throws IOException {
+    void readingAllWordsTest() throws IOException {
         Map<String, String> hashMap;
 
         hashMap = PrintsWhich.printsWhich(file);

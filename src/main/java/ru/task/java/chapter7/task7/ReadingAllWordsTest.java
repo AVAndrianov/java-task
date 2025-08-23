@@ -15,7 +15,7 @@ public class ReadingAllWordsTest {
     private File file;
 
     @BeforeEach
-    public void setUp() throws IOException {
+    void setUp() throws IOException {
         file = Files.createTempFile("test", "txt").toFile();
         try (FileWriter writer = new FileWriter(file)) {
             writer.append("1").append(System.lineSeparator());
@@ -31,7 +31,7 @@ public class ReadingAllWordsTest {
     }
 
     @Test
-    public void readingAllWordsTest() {
+    void readingAllWordsTest() {
         Map<String, Integer> treeMap;
 
         treeMap = ReadingAllWords.readingAllWords(file);

@@ -13,12 +13,12 @@ public class AllLettersCapitalLettersTest {
     private String[] mess;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         mess = new String[]{"SfSfS", "JhGfDG", "JGhdJG"};
     }
 
     @Test
-    public void iteratorTest() {
+    void iteratorTest() {
         List<String> list = AllLettersCapitalLetters.iterator(mess);
 
         assertEquals(list.get(0), mess[0].toLowerCase(Locale.ROOT));
@@ -27,7 +27,7 @@ public class AllLettersCapitalLettersTest {
     }
 
     @Test
-    public void indexTest() {
+    void indexTest() {
         List<String> list = AllLettersCapitalLetters.index(mess);
 
         assertEquals(list.get(0), mess[0].toLowerCase(Locale.ROOT));
@@ -36,7 +36,7 @@ public class AllLettersCapitalLettersTest {
     }
 
     @Test
-    public void replaceTest() {
+    void replaceTest() {
         List<String> list = AllLettersCapitalLetters.replace(mess);
 
         assertEquals(list.get(0), mess[0].toLowerCase(Locale.ROOT));

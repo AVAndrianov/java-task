@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class AnExceptionOccursTest {
 
     @Test
-    public void anExceptionOccursCatchExceptionTest() {
+    void anExceptionOccursCatchExceptionTest() {
         List<Integer> list = new ArrayList<>(List.of(1, 2, 3));
 
         new Thread(new AnExceptionOccurs(list)).start();
@@ -27,7 +27,7 @@ public class AnExceptionOccursTest {
     }
 
     @Test
-    public void anExceptionOccursSynchronizedListTest() {
+    void anExceptionOccursSynchronizedListTest() {
         List<Integer> list = Collections.synchronizedList(new ArrayList<>(List.of(1, 2, 3)));
 
         new Thread(new AnExceptionOccurs(list)).start();
@@ -42,7 +42,7 @@ public class AnExceptionOccursTest {
     }
 
     @Test
-    public void anExceptionOccursCopyOnWriteArrayListTest() {
+    void anExceptionOccursCopyOnWriteArrayListTest() {
         List<Integer> list = new CopyOnWriteArrayList<>(List.of(1, 2, 3));
 
         new Thread(new AnExceptionOccurs(list)).start();

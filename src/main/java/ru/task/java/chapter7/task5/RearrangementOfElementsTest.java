@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class RearrangementOfElementsTest {
 
     @Test
-    public void rearrangementOfElementsWithoutRandomAccessTest() {
+    void rearrangementOfElementsWithoutRandomAccessTest() {
         List<Integer> list = new ArrayList<>(List.of(1, 2, 3));
 
         List<Integer> result = (List<Integer>) RearrangementOfElements.swap(list, 0, 2);
@@ -24,7 +24,7 @@ public class RearrangementOfElementsTest {
     }
 
     @Test
-    public void rearrangementOfElementsWithRandomAccessTest() {
+    void rearrangementOfElementsWithRandomAccessTest() {
         List<Integer> linkedList = new LinkedList<>(Arrays.asList(1, 2, 3));
 
         List<Integer> result = (List<Integer>) RearrangementOfElements.swap(linkedList, 0, 2);

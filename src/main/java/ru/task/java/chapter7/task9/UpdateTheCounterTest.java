@@ -14,9 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UpdateTheCounterTest {
 
     private File file;
+    private Map<String, Integer> hashMap;
 
     @BeforeEach
-    public void setUp() throws IOException {
+    void setUp() throws IOException {
         file = Files.createTempFile("test", "txt").toFile();
         try (FileWriter writer = new FileWriter(file)) {
             writer.append("Напишите программу, которая считывает").append(System.lineSeparator());
@@ -30,9 +31,7 @@ public class UpdateTheCounterTest {
     }
 
     @Test
-    public void updateTheCounterGetOrDefaultTest() {
-        Map<String, Integer> hashMap;
-
+    void updateTheCounterGetOrDefaultTest() {
         hashMap = UpdateTheCounter.printsWhichGetOrDefault(file);
 
         assertEquals(1, hashMap.get("Напишите"));
@@ -40,9 +39,7 @@ public class UpdateTheCounterTest {
     }
 
     @Test
-    public void updateTheCounterContainsTest() {
-        Map<String, Integer> hashMap;
-
+    void updateTheCounterContainsTest() {
         hashMap = UpdateTheCounter.printsWhichContains(file);
 
         assertEquals(1, hashMap.get("Напишите"));
@@ -50,9 +47,7 @@ public class UpdateTheCounterTest {
     }
 
     @Test
-    public void updateTheCounterGetTest() {
-        Map<String, Integer> hashMap;
-
+    void updateTheCounterGetTest() {
         hashMap = UpdateTheCounter.printsWhichGet(file);
 
         assertEquals(1, hashMap.get("Напишите"));
@@ -60,9 +55,7 @@ public class UpdateTheCounterTest {
     }
 
     @Test
-    public void updateTheCounterPutIfAbsentTest() {
-        Map<String, Integer> hashMap;
-
+    void updateTheCounterPutIfAbsentTest() {
         hashMap = UpdateTheCounter.printsWhichPutIfAbsent(file);
 
         assertEquals(1, hashMap.get("Напишите"));
