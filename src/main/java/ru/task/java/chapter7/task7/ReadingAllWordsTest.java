@@ -1,20 +1,26 @@
 package ru.task.java.chapter7.task7;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.TreeMap;
 
-public final class ReadingAllWords {
+public class ReadingAllWordsTest {
 
-    private ReadingAllWords() {
-        throw new UnsupportedOperationException();
-    }
-
-    public static TreeMap<String, Integer> readingAllWords(File file) {
+    @Test
+    public static void readingAllWordsTest() {
+        File file = new File("ReadingAllWords.txt");
         TreeMap<String, Integer> treeMap = new TreeMap<>();
-        try (BufferedReader bf = new BufferedReader(new FileReader(file))) {
+
+        treeMap = ReadingAllWords.readingAllWords(file);
+
+
+        try (BufferedReader bf = new BufferedReader(new FileReader("ReadingAllWords.txt"))) {
+//            TreeMap<String, Integer> treeMap = new TreeMap<>();
+
             String line;
             while ((line = bf.readLine()) != null) {
                 String[] words = line.split("\\s+");
@@ -24,9 +30,13 @@ public final class ReadingAllWords {
                     }
                 }
             }
+            for (var entry : treeMap.entrySet()) {
+                System.out.println(entry.getKey() + " : " + entry.getValue());
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return treeMap;
+
     }
 }
