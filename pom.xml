@@ -11,14 +11,6 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <junit.jupiter.version>5.10.0</junit.jupiter.version>
-        <dl4j.version>1.0.0-M2.1</dl4j.version>
-        <nd4j.backend>nd4j-native-platform</nd4j.backend>
-        <logback.version>1.2.11</logback.version>
-        <slf4j.version>1.7.36</slf4j.version>
-        <smile.version>3.1.0</smile.version>
-        <tribuo.version>4.3.1</tribuo.version>
-        <weka.version>3.9.5</weka.version>
     </properties>
 
     <dependencies>
