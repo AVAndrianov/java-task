@@ -2,16 +2,20 @@ package ru.task.java.chapter7.task1;
 
 import java.util.BitSet;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.function.IntConsumer;
 
-public final class HashBitSet {
+public final class PrimeNumbers {
 
-    private HashBitSet() {
+    private PrimeNumbers() {
         throw new UnsupportedOperationException();
     }
 
-    public static Set<Integer> getHashSet(Set<Integer> hashSet) {
+    public static Set<Integer> getPrimeNumbersUntil(int n) {
+        Set<Integer> hashSet = new HashSet<>();
+        fillRange(hashSet::add, n);
         if (hashSet.isEmpty()) {
             return hashSet;
         }
@@ -27,7 +31,9 @@ public final class HashBitSet {
         return hashSet;
     }
 
-    public static BitSet getBitSet(BitSet bitSet) {
+    public static BitSet getPrimeBitUntil(int n) {
+        BitSet bitSet = new BitSet();
+        fillRange(bitSet::set, n);
         int smallestElement = bitSet.nextSetBit(0);
         if (smallestElement < 0) {
             return bitSet;
@@ -40,5 +46,11 @@ public final class HashBitSet {
             }
         }
         return bitSet;
+    }
+
+    private static void fillRange(IntConsumer adder, int n) {
+        for (int i = 2; i < n; i++) {
+            adder.accept(i);
+        }
     }
 }

@@ -1,43 +1,38 @@
 package ru.task.java.chapter7.task1;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.BitSet;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.IntConsumer;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OverviewPrimeNumbersTest {
 
+    private static Integer[] array;
+
+    @BeforeAll
+    static void setUp() {
+        array = new Integer[]{2, 3, 4, 5, 7, 9, 11, 13};
+    }
+
     @Test
     void getHashSetTest() {
-        Set<Integer> hashSet = new HashSet<>();
-        fillRange(2, 100, hashSet::add);
+        Set<Integer> result = PrimeNumbers.getPrimeNumbersUntil(14);
 
-        Set<Integer> result = HashBitSet.getHashSet(hashSet);
-
-        assertTrue(result.contains(13));
-        assertFalse(result.contains(6));
-        assertTrue(hashSet.containsAll(result));
+        assertEquals(result, new HashSet<>(Arrays.asList(array)));
     }
 
     @Test
     void getBitSetTest() {
-        BitSet bitSet = new BitSet();
-        fillRange(2, 100, bitSet::set);
+        BitSet result = PrimeNumbers.getPrimeBitUntil(14);
 
-        BitSet result = HashBitSet.getBitSet(bitSet);
-
-        assertTrue(result.get(13));
-        assertFalse(result.get(6));
-    }
-
-    private static void fillRange(int start, int end, IntConsumer adder) {
-        for (int i = start; i < end; i++) {
-            adder.accept(i);
+        for (Integer integer : array) {
+            assertTrue(result.get(integer));
         }
     }
 }

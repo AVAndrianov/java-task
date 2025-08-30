@@ -3,44 +3,42 @@ package ru.task.java.chapter7.task2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class AllLettersCapitalLettersTest {
-    private String[] mess;
+    private String[] array;
+    private List<String> expect;
 
     @BeforeEach
     void setUp() {
-        mess = new String[]{"SfSfS", "JhGfDG", "JGhdJG"};
+        array = new String[]{"SfSfS", "JhGfDG", "JGhdJG"};
     }
 
     @Test
     void iteratorTest() {
-        List<String> list = AllLettersCapitalLetters.iterator(mess);
+        expect = AllLettersCapitalLetters.iterator(array);
 
-        assertEquals(list.get(0), mess[0].toLowerCase(Locale.ROOT));
-        assertEquals(list.size(), mess.length);
-        assertNotEquals(list.get(0), mess[0]);
+        assertEquals(expect.toString(), Arrays.toString(array).toLowerCase(Locale.ROOT));
+        assertEquals(expect.size(), array.length);
     }
 
     @Test
     void indexTest() {
-        List<String> list = AllLettersCapitalLetters.index(mess);
+        expect = AllLettersCapitalLetters.index(array);
 
-        assertEquals(list.get(0), mess[0].toLowerCase(Locale.ROOT));
-        assertEquals(list.size(), mess.length);
-        assertNotEquals(list.get(0), mess[0]);
+        assertEquals(expect.toString(), Arrays.toString(array).toLowerCase(Locale.ROOT));
+        assertEquals(expect.size(), array.length);
     }
 
     @Test
     void replaceTest() {
-        List<String> list = AllLettersCapitalLetters.replace(mess);
+        expect = AllLettersCapitalLetters.replace(array);
 
-        assertEquals(list.get(0), mess[0].toLowerCase(Locale.ROOT));
-        assertEquals(list.size(), mess.length);
-        assertNotEquals(list.get(0), mess[0]);
+        assertEquals(expect.toString(), Arrays.toString(array).toLowerCase(Locale.ROOT));
+        assertEquals(expect.size(), array.length);
     }
 }

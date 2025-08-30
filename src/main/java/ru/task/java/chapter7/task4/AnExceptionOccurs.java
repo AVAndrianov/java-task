@@ -2,7 +2,7 @@ package ru.task.java.chapter7.task4;
 
 import java.util.List;
 
-public class AnExceptionOccurs implements Runnable {
+public class AnExceptionOccurs {
 
     private final List<Integer> list;
 
@@ -10,15 +10,9 @@ public class AnExceptionOccurs implements Runnable {
         this.list = list;
     }
 
-    @Override
-    public void run() {
-        try {
-            for (int i = 4; i < 8; i++) {
-                Thread.sleep(100);
-                list.add(i);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    public void changingCollection() {
+        for (Integer number : list) {
+            list.add(0, 9);
         }
     }
 }

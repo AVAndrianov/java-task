@@ -1,8 +1,6 @@
 package ru.task.java.chapter7.task5;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.RandomAccess;
 
@@ -15,14 +13,12 @@ public final class RearrangementOfElements {
     public static List<?> swap(List<?> list, int i, int j) {
         Object tempI = null;
         Object tempJ = null;
-        List<Object> listO;
         if (list instanceof RandomAccess) {
-            listO = new ArrayList<>(list);
-            tempI = listO.get(i);
-            tempJ = listO.get(j);
+            tempI = list.get(i);
+            tempJ = list.get(j);
         } else {
-            listO = new LinkedList<>(list);
-            Iterator<Object> iterator = listO.iterator();
+            //Тут приводим к типу Object
+            Iterator<Object> iterator = (Iterator<Object>) list.iterator();
             int index = 0;
             while (iterator.hasNext()) {
                 Object obj = iterator.next();
@@ -35,9 +31,10 @@ public final class RearrangementOfElements {
                 index++;
             }
         }
-        listO.set(i, tempJ);
-        listO.set(j, tempI);
-        return listO;
+        //Тут приводим к типу Object
+        ((List<Object>) list).set(i, tempJ);
+        ((List<Object>) list).set(j, tempI);
+        return list;
     }
 }
 
