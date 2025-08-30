@@ -1,4 +1,4 @@
-package ru.task.java.chapter4.dop;
+package ru.task.java.chapter4.dop.key;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
