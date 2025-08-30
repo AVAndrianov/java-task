@@ -1,8 +1,8 @@
 package ru.task.java.chapter4.dop.decorator;
 
-public class SetReadBorder extends ShapeDecorator {
+public class SetRedBorder extends ShapeDecorator {
 
-    public SetReadBorder(Shape shape) {
+    public SetRedBorder(Shape shape) {
         super(shape);
     }
 

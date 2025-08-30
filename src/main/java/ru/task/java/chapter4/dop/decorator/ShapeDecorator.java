@@ -1,6 +1,6 @@
 package ru.task.java.chapter4.dop.decorator;
 
-public abstract class ShapeDecorator implements Shape {
+public class ShapeDecorator implements Shape {
 
     protected Shape shape;
 

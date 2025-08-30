@@ -2,18 +2,18 @@ package ru.task.java.chapter4.dop.decorator;
 
 public class Circle implements Shape {
 
-    private String label;
+    private String currentShape;
 
     public Circle() {
-        label = "Circle";
+        currentShape = "Circle";
     }
 
-    public String getLabel() {
-        return label;
+    public String getCurrentShape() {
+        return currentShape;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public void setCurrentShape(String currentShape) {
+        this.currentShape = currentShape;
     }
 
     @Override
